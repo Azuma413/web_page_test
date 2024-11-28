@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+        }
+        div {
+            height: auto;
+            min-height: 200px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Markdown Editor</h1>
+    <button id="editButton">編集</button>
+    <textarea id="markdown" placeholder="ここにマークダウンを入力してください..."></textarea>
+    <div id="preview"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const textarea = document.getElementById('markdown');
+        const preview = document.getElementById('preview');
+        const editButton = document.getElementById('editButton');
+
+        textarea.addEventListener('input', () => {
+            const markdownText = textarea.value;
+            preview.innerHTML = marked(markdownText);
+        });
+
+        editButton.addEventListener('click', () => {
+            window.location.href = 'edit.html';
+        });
+    </script>
+</body>
+</html>
